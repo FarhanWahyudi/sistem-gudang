@@ -7,6 +7,23 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+});
+
+Route::get('/admin/stock', function () {
+    return view('admin.stocks');
+});
+Route::get('/admin/product', function () {
+    return view('admin.products');
+});
+Route::get('/admin/category', function () {
+    return view('admin.categories');
+});
+Route::get('/admin/staf', function () {
+    return view('admin.staf');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified', 'role:user'])->name('dashboard');
