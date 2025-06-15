@@ -24,6 +24,10 @@ Route::get('/admin/staf', function () {
     return view('admin.staf');
 });
 
+Route::get('/product', function () {
+    return view('user.products');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified', 'role:user'])->name('dashboard');
