@@ -135,11 +135,11 @@
             <table class="w-full">
                 <thead>
                     <tr class="border-y-2">
-                        <th class="table-cell p-3 text-[#6D6D6D] text-start">Products</th>
+                        <th class="table-cell p-3 text-[#6D6D6D] text-start w-[450px]">Products</th>
                         <th class="text-[#6D6D6D] text-start">Category</th>
                         <th class="text-[#6D6D6D] text-start">Price</th>
-                        <th class="text-[#6D6D6D] text-start">Stock</th>
-                        <th class="text-[#6D6D6D] text-start">Date</th>
+                        <th class="text-[#6D6D6D] text-start w-52">Stock</th>
+                        <th class="text-[#6D6D6D] text-start w-32">Date</th>
                     </tr>
                     <tr class="border-y-2">
                         <td class="font-bold flex items-center gap-3 py-2">
