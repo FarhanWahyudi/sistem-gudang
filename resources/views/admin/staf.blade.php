@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="bg-white rounded-2xl border-2 border-[#F2F4F7] p-7 mb-20">
+    <div class="w-full bg-white rounded-2xl border-2 border-[#F2F4F7] p-7 mb-20 h-auto">
         <h1 class="text-start font-black text-lg mb-7">Users Management</h1>
         <table class="w-full">
             <thead>

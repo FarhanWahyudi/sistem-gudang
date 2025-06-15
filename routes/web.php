@@ -23,6 +23,9 @@ Route::get('/admin/category', function () {
 Route::get('/admin/staf', function () {
     return view('admin.staf');
 });
+Route::get('/admin/product/add-product', function () {
+    return view('admin.add-product');
+});
 
 Route::get('/stock', function () {
     return view('user.stocks');

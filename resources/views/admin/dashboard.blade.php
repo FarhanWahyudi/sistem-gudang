@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="flex flex-col gap-10">
+    <div class="w-full flex flex-col gap-10">
         <div class="flex justify-between">
             <div class="w-80 bg-white p-3 rounded-2xl border-2 border-[#F2F4F7]">
                 <div class="flex items-center gap-5">
@@ -49,7 +49,7 @@
             </div>
         </div>
         <div class="bg-white rounded-2xl border-2 border-[#F2F4F7] p-7 pb-16">
-            <h1 class="text-start font-black text-lg">Statistics</h1>
+            <h1 class="text-start font-black text-lg mb-1">Statistics</h1>
             <div class="flex gap-3 mb-20">
                 <div class="flex items-center gap-1">
                     <span class="w-4 h-4 rounded-[50%] bg-[#465FFF]"></span>

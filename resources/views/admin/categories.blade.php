@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('content')
-    <div class="flex justify-between items-start">
+    <div class="w-full flex justify-between items-start">
         <div class="bg-white w-[900px] rounded-2xl border-2 border-[#F2F4F7] p-7">
             <h1 class="text-start font-black text-lg mb-7">Category</h1>
             <table class="w-full">
