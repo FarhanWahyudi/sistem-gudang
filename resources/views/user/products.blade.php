@@ -1,7 +1,7 @@
 @extends('layouts.user')
 
 @section('content')
-    <div class="bg-white rounded-2xl border-2 border-[#F2F4F7] p-7 mb-20">
+    <div class="bg-white w-full rounded-2xl border-2 border-[#F2F4F7] p-7 mb-20">
         <h1 class="text-start font-black text-lg mb-7">Products</h1>
         <table class="w-full">
             <thead>

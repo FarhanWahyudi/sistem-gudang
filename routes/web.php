@@ -24,8 +24,17 @@ Route::get('/admin/staf', function () {
     return view('admin.staf');
 });
 
+Route::get('/stock', function () {
+    return view('user.stocks');
+});
 Route::get('/product', function () {
     return view('user.products');
+});
+Route::get('/product', function () {
+    return view('user.products');
+});
+Route::get('/category', function () {
+    return view('user.categories');
 });
 
 Route::get('/dashboard', function () {

@@ -74,7 +74,7 @@
                     <h3 class="text-xl font-semibold group-hover:text-[#465FFF] text-[#6D6D6D]">User1</h3>
                 </div>
             </div>
-            <div class="bg-[#F9FAFB] min-h-[calc(100vh-82px)] px-28 py-10">
+            <div class="bg-[#F9FAFB] min-h-[calc(100vh-82px)] px-28 py-10 flex justify-center">
                 @yield('content')
             </div>
         </div>
