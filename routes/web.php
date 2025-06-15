@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -7,24 +8,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin/dashboard', function () {
-    return view('admin.dashboard');
-});
-
-Route::get('/admin/stock', function () {
-    return view('admin.stocks');
-});
-Route::get('/admin/product', function () {
-    return view('admin.products');
-});
-Route::get('/admin/category', function () {
-    return view('admin.categories');
-});
-Route::get('/admin/staf', function () {
-    return view('admin.staf');
-});
-Route::get('/admin/product/add-product', function () {
-    return view('admin.add-product');
+Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/admin/dashboard', 'dashboard');
+    Route::get('/admin/stock', 'stock');
+    Route::get('/admin/product', 'product');
+    Route::get('/admin/category', 'category');
+    Route::get('/admin/staf', 'staf');
+    Route::get('/admin/product/add-product', 'addProduct');
 });
 
 Route::get('/stock', function () {
