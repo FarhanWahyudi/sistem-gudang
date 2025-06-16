@@ -8,14 +8,18 @@
             <div class="flex flex-wrap gap-y-7 justify-between">
                 <div class="flex flex-col">
                     <label for="title" class="text-[#6D6D6D] mb-1">Product Title</label>
-                    <input name="title" id="product-title" type="text" class="w-96 h-10 border border-[#979797] rounded-lg focus:border-[#979797] focus:ring-0" value="{{ old('title') }}">
+                    <input id='title' name="title" id="product-title" type="text" class="w-96 h-10 border border-[#979797] rounded-lg focus:border-[#979797] focus:ring-0" value="{{ old('title') }}">
                     @error('title')
                         <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
                     @enderror
                 </div>
                 <div class="flex flex-col">
-                    <label for="category_id" class="text-[#6D6D6D] mb-1">Category</label>
-                    <input name="category_id" id="product-title" type="text" class="w-96 h-10 border border-[#979797] rounded-lg focus:border-[#979797] focus:ring-0" value="{{ old('category_id') }}">
+                    <label for="category" class="text-[#6D6D6D] mb-1">Category</label>
+                    <select id='category' name="category_id" id="product-title" type="text" class="w-96 h-10 border border-[#979797] rounded-lg focus:border-[#979797] focus:ring-0" value="{{ old('category_id') }}">
+                    @foreach($categories as $category)
+                        <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }} >{{ $category->name }}</option>
+                    @endforeach
+                    </select>
                     @error('category_id')
                         <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
                     @enderror
@@ -24,7 +28,7 @@
                     <label for="price" class="text-[#6D6D6D] mb-1">Price</label>
                     <div class="flex items-center gap-2">
                         <p class="text-[#6D6D6D]">Rp.</p>
-                        <input name="price" id="product-title" type="text" class="w-[352px] h-10 border border-[#979797] rounded-lg focus:border-[#979797] focus:ring-0" value="{{ old('price') }}">
+                        <input id='price' name="price" id="product-title" type="text" class="w-[352px] h-10 border border-[#979797] rounded-lg focus:border-[#979797] focus:ring-0" value="{{ old('price') }}">
                     </div>
                     @error('price')
                         <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
@@ -32,7 +36,7 @@
                 </div>
                 <div class="flex flex-col">
                     <label for="stock" class="text-[#6D6D6D] mb-1">Stock</label>
-                    <input name="stock" id="product-title" type="text" class="w-96 h-10 border border-[#979797] rounded-lg focus:border-[#979797] focus:ring-0" value="{{ old('stock') }}">
+                    <input id='stock' name="stock" id="product-title" type="text" class="w-96 h-10 border border-[#979797] rounded-lg focus:border-[#979797] focus:ring-0" value="{{ old('stock') }}">
                     @error('stock')
                         <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
                     @enderror

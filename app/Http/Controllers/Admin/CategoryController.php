@@ -27,7 +27,7 @@ class CategoryController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'name' => 'required|string|max:100'
+            'name' => 'required|string|max:100|unique:categories,name'
         ]);
 
         $this->categoryService->addCategory($validated);

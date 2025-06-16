@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Services\ProductService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -25,7 +26,9 @@ class ProductController extends Controller
 
     public function create(): Response
     {
-        return response()->view('admin.add-product');
+        $categories = Category::all();
+
+        return response()->view('admin.add-product', compact('categories'));
     }
 
     public function store(Request $request): RedirectResponse
