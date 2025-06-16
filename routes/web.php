@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
-    Route::get('/stock', [StockController::class, 'stock'])->name('stock');
+    Route::get('/stock', [StockController::class, 'index'])->name('stock');
+    Route::post('/stock/in/{id}', [StockController::class, 'addStock'])->name('add-stock');
+    Route::post('/stock/out/{id}', [StockController::class, 'reduceStock'])->name('reduce-stock');
     Route::get('/product', [ProductController::class, 'index'])->name('product');
     Route::get('/product/add-product', [ProductController::class, 'create'])->name('add-product');
     Route::post('/product/add-product', [ProductController::class, 'store'])->name('post-add-product');

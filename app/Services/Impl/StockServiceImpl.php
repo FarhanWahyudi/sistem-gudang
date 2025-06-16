@@ -8,7 +8,7 @@ use App\Services\StockService;
 
 class StockServiceImpl implements StockService
 {
-    public function addStock(int $productId, int $stock): void
+    public function add(int $productId, int $stock): void
     {
         $product = Product::find($productId);
 
@@ -19,23 +19,23 @@ class StockServiceImpl implements StockService
                 'quantity' => $stock
             ]);
 
-            $product->quantity += $stock;
+            $product->stock += $stock;
             $product->save();
         }
     }
 
-    public function reduceStock(int $productId, int $stock): void
+    public function out(int $productId, int $stock): void
     {
         $product = Product::find($productId);
         
-        if($product && $stock <= $product->quantity) {
+        if($product && $stock <= $product->stock) {
             Stock::create([
                 'product_id' => $productId,
                 'type' => 'out',
                 'quantity' => $stock
             ]);
 
-            $product->quantity -= $stock;
+            $product->stock -= $stock;
             $product->save();
         }
     }

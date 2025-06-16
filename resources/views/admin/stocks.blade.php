@@ -12,46 +12,36 @@
                     <th class="text-[#6D6D6D] text-start w-48">Stock Masuk</th>
                     <th class="text-[#6D6D6D] text-start w-48">Stock Keluar</th>
                 </tr>
+                @foreach($products as $product)
                 <tr class="border-y-2">
                     <td class="font-bold flex items-center gap-3 py-2">
                         <img src="{{asset('assets/products/Oxford-Stacking-Armchair.png')}}" alt="">
-                        Oxford Stacking Armchair
+                        {{ $product->title }}
                     </td>
-                    <td class="text-[#6D6D6D] text-start">Chair</td>
-                    <td class="text-[#6D6D6D] text-start">12</td>
-                    <td class="text-[#6D6D6D] text-start">
-                        <form action="" class="flex items-center gap-2">
-                            <input type="number" name="stock-masuk" class="w-20 h-10 border-1 border-[#979797] rounded-lg focus:border-[#979797] focus:ring-0">
+                    <td class="text-[#6D6D6D] text-start">{{ $product->category->name }}</td>
+                    <td class="text-[#6D6D6D] text-start">{{ $product->stock }}</td>
+                    <td class="text-[#6D6D6D] text-start py-2">
+                        <form action="{{ route('admin.add-stock', $product->id) }}" method="POST" class="flex items-center gap-2">
+                            @csrf
+                            <input type="number" name="stock_masuk[{{ $product->id }}]" class="w-20 h-10 border-1 border-[#979797] rounded-lg focus:border-[#979797] focus:ring-0" value="{{ old('stock_masuk.' . $product->id) }}">
                             <input type="submit" class="h-10 w-16 bg-[#00DF77] rounded-lg text-white cursor-pointer" value="Add">
                         </form>
+                        @error("stock_masuk.$product->id")
+                            <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                        @enderror
                     </td>
-                    <td>
-                        <form action="" class="flex items-center gap-2">
-                            <input type="number" name="stock-keluar" class="w-20 h-10 border-1 border-[#979797] rounded-lg focus:border-[#979797] focus:ring-0">
+                    <td class="text-[#6D6D6D] text-start py-2">
+                        <form action="{{  route('admin.reduce-stock', $product->id) }}" method="POST" class="flex items-center gap-2">
+                            @csrf
+                            <input type="number" name="stock_keluar[{{ $product->id }}]" class="w-20 h-10 border-1 border-[#979797] rounded-lg focus:border-[#979797] focus:ring-0" value="{{ old('stock_keluar.' . $product->id) }}">
                             <input type="submit" class="h-10 w-16 bg-[#FF4A4D] rounded-lg text-white cursor-pointer" value="Out">
                         </form>
+                        @error("stock_keluar.$product->id")
+                            <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                        @enderror
                     </td>
                 </tr>
-                <tr class="border-y-2">
-                    <td class="font-bold flex items-center gap-3 py-2">
-                        <img src="{{asset('assets/products/Oxford-Stacking-Armchair.png')}}" alt="">
-                        Oxford Stacking Armchair
-                    </td>
-                    <td class="text-[#6D6D6D] text-start">Chair</td>
-                    <td class="text-[#6D6D6D] text-start">12</td>
-                    <td class="text-[#6D6D6D] text-start">
-                        <form action="" class="flex items-center gap-2">
-                            <input type="number" name="stock-masuk" class="w-20 h-10 border-1 border-[#979797] rounded-lg focus:border-[#979797] focus:ring-0">
-                            <input type="submit" class="h-10 w-16 bg-[#00DF77] rounded-lg text-white cursor-pointer" value="Add">
-                        </form>
-                    </td>
-                    <td>
-                        <form action="" class="flex items-center gap-2">
-                            <input type="number" name="stock-masuk" class="w-20 h-10 border-1 border-[#979797] rounded-lg focus:border-[#979797] focus:ring-0">
-                            <input type="submit" class="h-10 w-16 bg-[#FF4A4D] rounded-lg text-white cursor-pointer" value="Out">
-                        </form>
-                    </td>
-                </tr>
+                @endforeach
             </thead>
         </table>
     </div>

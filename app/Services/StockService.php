@@ -4,7 +4,7 @@ namespace App\Services;
 
 interface StockService
 {
-    function addStock(int $productId, int $stock): void;
+    function add(int $productId, int $stock): void;
 
-    function reduceStock(int $productId, int $stock): void;
+    function out(int $productId, int $stock): void;
 }
