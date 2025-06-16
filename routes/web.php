@@ -1,33 +1,33 @@
 <?php
 
-use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\StafController;
+use App\Http\Controllers\Admin\StockController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\User\CategoryController as UserCategoryController;
+use App\Http\Controllers\User\ProductController as UserProductController;
+use App\Http\Controllers\User\StockController as UserStockController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::controller(AdminController::class)->middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin/dashboard', 'dashboard');
-    Route::get('/admin/stock', 'stock');
-    Route::get('/admin/product', 'product');
-    Route::get('/admin/category', 'category');
-    Route::get('/admin/staf', 'staf');
-    Route::get('/admin/product/add-product', 'addProduct');
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
+    Route::get('/stock', [StockController::class, 'stock']);
+    Route::get('/product', [ProductController::class, 'product']);
+    Route::get('/product/add-product', [ProductController::class, 'addProduct']);
+    Route::get('/category', [CategoryController::class, 'category']);
+    Route::get('/staf', [StafController::class, 'staf']);
 });
 
-Route::get('/stock', function () {
-    return view('user.stocks');
-});
-Route::get('/product', function () {
-    return view('user.products');
-});
-Route::get('/product', function () {
-    return view('user.products');
-});
-Route::get('/category', function () {
-    return view('user.categories');
+Route::name('user')->middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/stock', [UserStockController::class, 'stock']);
+    Route::get('/product', [UserProductController::class, 'product']);
+    Route::get('/category', [UserCategoryController::class, 'category']);
 });
 
 Route::get('/dashboard', function () {
