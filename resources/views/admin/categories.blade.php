@@ -32,12 +32,16 @@
         </div>
         <div class="bg-white w-[400px] rounded-2xl border-2 border-[#F2F4F7] p-7">
             <h1 class="font-black text-lg mb-7">Addd New Category</h1>
-            <form action="">
-                <label class="text-[#6D6D6D]">Category</label>
+            <form action="{{ route('admin.post-category') }}" method="POST">
+                @csrf
+                <label for="category" class="text-[#6D6D6D]">Category</label>
                 <div class="flex gap-3 mt-2">
-                    <input type="text" name="category" class="flex grow h-10 border border-[#979797] rounded-lg focus:border-[#979797] focus:ring-0">
+                    <input id="category" type="text" name="name" class="flex grow h-10 border border-[#979797] rounded-lg focus:border-[#979797] focus:ring-0">
                     <input type="submit" class="h-10 w-16 bg-[#465FFF] rounded-lg text-white cursor-pointer" value="Add">
                 </div>
+                @error('name')
+                    <p class="text-sm text-red-500 mt-1">{{ $message }}</p>
+                @enderror
             </form>
         </div>
     </div>

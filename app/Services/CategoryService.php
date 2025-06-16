@@ -8,5 +8,5 @@ interface CategoryService
 {
     function getCategory(): Collection;
 
-    function addCategory(string $category): void;
+    function addCategory(array $data): void;
 }

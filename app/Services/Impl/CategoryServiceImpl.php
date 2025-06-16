@@ -13,10 +13,8 @@ class CategoryServiceImpl implements CategoryService
         return Category::all();
     }
 
-    public function addCategory(string $category): void
+    public function addCategory(array $data): void
     {
-        Category::create([
-            'name' => $category
-        ]);
+        Category::create($data);
     }
 }
