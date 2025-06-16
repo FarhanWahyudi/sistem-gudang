@@ -11,28 +11,21 @@ use App\Http\Controllers\User\ProductController as UserProductController;
 use App\Http\Controllers\User\StockController as UserStockController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
+    Route::get('/stock', [StockController::class, 'stock'])->name('stock');
+    Route::get('/product', [ProductController::class, 'product'])->name('product');
+    Route::get('/product/add-product', [ProductController::class, 'create'])->name('add-product');
+    Route::post('/product/add-product', [ProductController::class, 'store'])->name('post-add-product');
+    Route::get('/category', [CategoryController::class, 'category'])->name('category');
+    Route::get('/staf', [StafController::class, 'staf'])->name('staf');
 });
 
-Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'dashboard']);
-    Route::get('/stock', [StockController::class, 'stock']);
-    Route::get('/product', [ProductController::class, 'product']);
-    Route::get('/product/add-product', [ProductController::class, 'addProduct']);
-    Route::get('/category', [CategoryController::class, 'category']);
-    Route::get('/staf', [StafController::class, 'staf']);
+Route::name('user.')->middleware(['auth', 'role:user'])->group(function () {
+    Route::get('/stock', [UserStockController::class, 'stock'])->name('stock');
+    Route::get('/product', [UserProductController::class, 'product'])->name('product');
+    Route::get('/category', [UserCategoryController::class, 'category'])->name('category');
 });
-
-Route::name('user')->middleware(['auth', 'role:user'])->group(function () {
-    Route::get('/stock', [UserStockController::class, 'stock']);
-    Route::get('/product', [UserProductController::class, 'product']);
-    Route::get('/category', [UserCategoryController::class, 'category']);
-});
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified', 'role:user'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

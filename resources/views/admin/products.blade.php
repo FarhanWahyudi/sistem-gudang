@@ -4,7 +4,7 @@
     <div class="w-full bg-white rounded-2xl border-2 border-[#F2F4F7] p-7 mb-20">
         <div class="flex items-center justify-between mb-7">
             <h1 class="text-start font-black text-lg">Products</h1>
-            <a href="{{url('/admin/product/add-product')}}" class="flex items-center justify-center h-10 w-40 bg-[#465FFF] rounded-lg text-white cursor-pointer">Add New Product</a>
+            <a href="{{route('admin.add-product')}}" class="flex items-center justify-center h-10 w-40 bg-[#465FFF] rounded-lg text-white cursor-pointer">Add New Product</a>
         </div>
         <table class="w-full">
             <thead>

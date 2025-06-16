@@ -7,11 +7,18 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Product extends Model
 {
-    protected $table = 'products';
+    protected $table = 'products'; 
     protected $primaryKey = 'id';
     protected $keyType = 'int';
     public $timestamps = true;
     public $incrementing = true;
+
+    public $fillable = [
+        'title',
+        'price',
+        'stock',
+        'category_id'
+    ];
 
     public function category(): BelongsTo
     {

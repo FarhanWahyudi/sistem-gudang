@@ -29,7 +29,7 @@
                         $product = request()->is('product');
                         $category = request()->is('category');
                     @endphp
-                    <a href="{{url('/stock')}}">
+                    <a href="{{route('user.stock')}}">
                         <div class="{{ $stock ? 'bg-[#ECF3FF]' : 'bg-white' }} flex items-center gap-6 p-3 rounded-md hover:bg-[#ECF3FF] duration-500 ease-in-out group ">
                             <img src="{{ $stock ? '/assets/icons/stock-active.png' : '/assets/icons/stock.png' }}" alt="" class="absolute opacity-100 {{ $stock ? '' : 'group-hover:opacity-0 transition-opacity duration-300 ease-in-out' }}">
                             <img src="{{ $stock ? '/assets/icons/stock.png' : '/assets/icons/stock-active.png' }}" alt="" class="absolute opacity-0 {{ $stock ? '' : 'group-hover:opacity-100 transition-opacity duration-300 ease-in-out' }}">
@@ -37,7 +37,7 @@
                             <h3 class="{{ $stock ? 'text-[#465FFF]' : 'text-[#6D6D6D]' }} text-xl font-semibold group-hover:text-[#465FFF]">Stock</h3>
                         </div>
                     </a>
-                    <a href="{{url('/product')}}">
+                    <a href="{{route('user.product')}}">
                         <div class="{{ $product ? 'bg-[#ECF3FF]' : 'bg-white' }} flex items-center gap-6 p-3 rounded-md hover:bg-[#ECF3FF] duration-500 ease-in-out group ">
                             <img src="{{ $product ? '/assets/icons/product-active.png' : '/assets/icons/product.png' }}" alt="" class="absolute opacity-100 {{ $product ? '' : 'group-hover:opacity-0 transition-opacity duration-300 ease-in-out' }}">
                             <img src="{{ $product ? '/assets/icons/product.png' : '/assets/icons/product-active.png' }}" alt="" class="absolute opacity-0 {{ $product ? '' : 'group-hover:opacity-100 transition-opacity duration-300 ease-in-out' }}">
@@ -45,7 +45,7 @@
                             <h3 class="{{ $product ? 'text-[#465FFF]' : 'text-[#6D6D6D]' }} text-xl font-semibold group-hover:text-[#465FFF]">Products</h3>
                         </div>
                     </a>
-                    <a href="{{url('/category')}}">
+                    <a href="{{route('user.category')}}">
                         <div class="{{ $category ? 'bg-[#ECF3FF]' : 'bg-white' }} flex items-center gap-6 p-3 rounded-md hover:bg-[#ECF3FF] duration-500 ease-in-out group ">
                             <img src="{{ $category ? '/assets/icons/category-active.png' : '/assets/icons/category.png' }}" alt="" class="absolute opacity-100 {{ $category ? '' : 'group-hover:opacity-0 transition-opacity duration-300 ease-in-out' }}">
                             <img src="{{ $category ? '/assets/icons/category.png' : '/assets/icons/category-active.png' }}" alt="" class="absolute opacity-0 {{ $category ? '' : 'group-hover:opacity-100 transition-opacity duration-300 ease-in-out' }}">
