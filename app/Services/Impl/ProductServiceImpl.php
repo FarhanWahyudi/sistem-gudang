@@ -10,7 +10,7 @@ class ProductServiceImpl implements ProductService
 {
     public function getProduct(): Collection
     {
-        return Product::get()->toArray();
+        return Product::all();
     }
 
     public function addProduct(array $data): void

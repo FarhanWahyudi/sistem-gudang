@@ -16,9 +16,11 @@ class ProductController extends Controller
         $this->productService = $productService;
     }
     
-    public function product(): Response
+    public function index(): Response
     {
-        return response()->view('admin.products');
+        $products = $this->productService->getProduct();
+
+        return response()->view('admin.products', compact('products'));
     }
 
     public function create(): Response
