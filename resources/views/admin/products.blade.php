@@ -21,7 +21,7 @@
                         <img src="{{asset('assets/products/Oxford-Stacking-Armchair.png')}}" alt="">
                         {{ $product->title }}
                     </td>
-                    <td class="text-[#6D6D6D] text-start">{{ $product->category_id }}</td>
+                    <td class="text-[#6D6D6D] text-start">{{ $product->category->name }}</td>
                     <td class="text-[#6D6D6D] text-start">{{ $product->price }}</td>
                     <td class="text-[#6D6D6D] text-start">{{ $product->stock }}</td>
                     <td>

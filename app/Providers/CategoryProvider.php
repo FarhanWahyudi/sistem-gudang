@@ -2,22 +2,21 @@
 
 namespace App\Providers;
 
-use App\Services\Impl\ProductServiceImpl;
-use App\Services\ProductService;
+use App\Services\CategoryService;
+use App\Services\impl\CategoryServiceImpl;
 use Illuminate\Contracts\Support\DeferrableProvider;
 use Illuminate\Support\ServiceProvider;
 
-class ProductProvider extends ServiceProvider implements DeferrableProvider
+class CategoryProvider extends ServiceProvider implements DeferrableProvider
 {
     public array $singletons = [
-        ProductService::class => ProductServiceImpl::class
+        CategoryService::class => CategoryServiceImpl::class
     ];
 
     public function provides(): array
     {
-        return [ProductService::class];
+        return [CategoryService::class];
     }
-
     /**
      * Register services.
      */
