@@ -17,4 +17,11 @@ class ProductServiceImpl implements ProductService
     {
         Product::create($data);
     }
+
+    public function updateProduct(int $id, array $data): void
+    {
+        $product = Product::findOrFail($id);
+
+        $product->update($data);
+    }
 }

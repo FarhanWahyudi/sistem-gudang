@@ -25,9 +25,13 @@
                     <td class="text-[#6D6D6D] text-start">Rp{{ number_format($product->price, 0, ',', '.') }}</td>
                     <td class="text-[#6D6D6D] text-start">{{ $product->stock }}</td>
                     <td>
-                        <form action="" class="flex items-center gap-2">
-                            <input type="submit" class="h-10 w-16 bg-[#00DF77] rounded-lg text-white cursor-pointer" value="Edit">
-                        </form>
+                        <div class="flex gap-3">
+                            <a href="{{ route('admin.update-product', $product->id) }}" class="flex justify-center items-center h-10 w-16 bg-[#00DF77] rounded-lg text-white cursor-pointer">Edit</a>
+                            <form action="{{ route('admin.delete-product', $product->id) }}" method="POST">
+                                @csrf
+                                <input type="submit" class="h-10 w-16 bg-[#FF4A4D] rounded-lg text-white cursor-pointer" value="Delete">
+                            </form>
+                        </div>
                     </td>
                 </tr>
                 @endforeach
