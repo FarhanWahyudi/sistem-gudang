@@ -11,7 +11,7 @@
                     <h3 class="text-[#6D6D6D] text-lg">Product</h3>
                 </div>
                 <div class="flex justify-end">
-                    <h1 class="text-4xl font-bold">58</h1>
+                    <h1 class="text-4xl font-bold">{{ $product }}</h1>
                 </div>
             </div>
             <div class="w-80 bg-white p-3 rounded-2xl border-2 border-[#F2F4F7]">
@@ -22,7 +22,7 @@
                     <h3 class="text-[#6D6D6D] text-lg">Category</h3>
                 </div>
                 <div class="flex justify-end">
-                    <h1 class="text-4xl font-bold">9</h1>
+                    <h1 class="text-4xl font-bold">{{ $category }}</h1>
                 </div>
             </div>
             <div class="w-80 bg-white p-3 rounded-2xl border-2 border-[#F2F4F7]">
@@ -33,7 +33,7 @@
                     <h3 class="text-[#6D6D6D] text-lg">Stock</h3>
                 </div>
                 <div class="flex justify-end">
-                    <h1 class="text-4xl font-bold">210</h1>
+                    <h1 class="text-4xl font-bold">{{ $stock }}</h1>
                 </div>
             </div>
             <div class="w-80 bg-white p-3 rounded-2xl border-2 border-[#F2F4F7]">
@@ -44,7 +44,7 @@
                     <h3 class="text-[#6D6D6D] text-lg">Stock Menipis</h3>
                 </div>
                 <div class="flex justify-end">
-                    <h1 class="text-4xl font-bold">13</h1>
+                    <h1 class="text-4xl font-bold">{{ $stockMenipis }}</h1>
                 </div>
             </div>
         </div>
@@ -139,44 +139,32 @@
                         <th class="text-[#6D6D6D] text-start">Category</th>
                         <th class="text-[#6D6D6D] text-start">Price</th>
                         <th class="text-[#6D6D6D] text-start w-52">Stock</th>
-                        <th class="text-[#6D6D6D] text-start w-32">Date</th>
+                        <th class="text-[#6D6D6D] text-start w-40">Date</th>
                     </tr>
+                    @foreach($stocks as $dataStock)
                     <tr class="border-y-2">
                         <td class="font-bold flex items-center gap-3 py-2">
                             <img src="{{asset('assets/products/Oxford-Stacking-Armchair.png')}}" alt="">
-                            Oxford Stacking Armchair
+                            {{ $dataStock->product->title }}
                         </td>
-                        <td class="text-[#6D6D6D] text-start">Chair</td>
-                        <td class="text-[#6D6D6D] text-start">Rp. 800.000.00</td>
+                        <td class="text-[#6D6D6D] text-start">{{ $dataStock->product->category->name }}</td>
+                        <td class="text-[#6D6D6D] text-start">{{ $dataStock->product->price }}</td>
                         <td class="text-[#6D6D6D] text-start">
                             <div class="flex items-start">
-                                <p>12</p>
+                                <p>{{ $dataStock->stock_akhir }}</p>
                                 <div class="flex items-center">
+                                    @if($dataStock->type == 'in')
                                     <img src="{{asset('assets/arrow-up.png')}}" alt="">
-                                    <p class="text-xs text-[#00DF77]">3</p>
+                                    @elseif($dataStock->type == 'out')
+                                    <img src="{{asset('assets/arrow-down.png')}}" alt="">
+                                    @endif
+                                    <p class="text-xs {{ $dataStock->type == 'in' ? 'text-[#00DF77]' : 'text-[#FF4A4D]' }}">{{ $dataStock->quantity }}</p>
                                 </div>
                             </div>
                         </td>
-                        <td class="text-[#6D6D6D] text-start">12-06-2025</td>
+                        <td class="text-[#6D6D6D] text-start">{{ $dataStock->created_at->format('H:i d-m-y') }}</td>
                     </tr>
-                    <tr class="border-y-2">
-                        <td class="font-bold flex items-center gap-3 py-2">
-                            <img src="{{asset('assets/products/Oxford-Stacking-Armchair.png')}}" alt="">
-                            Oxford Stacking Armchair
-                        </td>
-                        <td class="text-[#6D6D6D] text-start">Chair</td>
-                        <td class="text-[#6D6D6D] text-start">Rp. 800.000.00</td>
-                        <td class="text-[#6D6D6D] text-start">
-                            <div class="flex items-start">
-                                <p>12</p>
-                                <div class="flex items-center">
-                                    <img src="{{asset('assets/arrow-up.png')}}" alt="">
-                                    <p class="text-xs text-[#00DF77]">3</p>
-                                </div>
-                            </div>
-                        </td>
-                        <td class="text-[#6D6D6D] text-start">12-06-2025</td>
-                    </tr>
+                    @endforeach
                 </thead>
             </table>
         </div>

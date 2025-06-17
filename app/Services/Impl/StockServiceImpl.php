@@ -13,14 +13,15 @@ class StockServiceImpl implements StockService
         $product = Product::find($productId);
 
         if($product) {
+            $product->stock += $stock;
+            $product->save();
+
             Stock::create([
                 'product_id' => $productId,
                 'type' => 'in',
-                'quantity' => $stock
+                'quantity' => $stock,
+                'stock_akhir' => $product->stock
             ]);
-
-            $product->stock += $stock;
-            $product->save();
         }
     }
 
@@ -29,14 +30,15 @@ class StockServiceImpl implements StockService
         $product = Product::find($productId);
         
         if($product && $stock <= $product->stock) {
+            $product->stock -= $stock;
+            $product->save();
+
             Stock::create([
                 'product_id' => $productId,
                 'type' => 'out',
-                'quantity' => $stock
+                'quantity' => $stock,
+                'stock_akhir' => $product->stock
             ]);
-
-            $product->stock -= $stock;
-            $product->save();
         }
     }
 }
