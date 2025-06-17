@@ -27,7 +27,7 @@
                     @php
                         $stock = request()->is('stock');
                         $product = request()->is('product');
-                        $category = request()->is('category');
+                        $category = request()->is('category*');
                     @endphp
                     <a href="{{route('user.stock')}}">
                         <div class="{{ $stock ? 'bg-[#ECF3FF]' : 'bg-white' }} flex items-center gap-6 p-3 rounded-md hover:bg-[#ECF3FF] duration-500 ease-in-out group ">
