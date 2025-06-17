@@ -35,7 +35,7 @@ class CategoryController extends Controller
         return redirect()->route('admin.category');
     }
 
-    public function showProducts(int $id)
+    public function showProducts(int $id): Response
     {
         $category = Category::findOrFail($id);
 
@@ -43,5 +43,12 @@ class CategoryController extends Controller
             'category' => $category->name,
             'products' => $category->products
         ]);
+    }
+
+    public function deleteCategory(int $id): RedirectResponse
+    {
+        $this->categoryService->deleteCategory($id);
+
+        return redirect()->route('admin.category');
     }
 }

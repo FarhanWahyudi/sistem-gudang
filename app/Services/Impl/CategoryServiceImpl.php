@@ -17,4 +17,9 @@ class CategoryServiceImpl implements CategoryService
     {
         Category::create($data);
     }
+
+    public function deleteCategory(int $id): void
+    {
+        Category::findOrFail($id)->delete();
+    }
 }

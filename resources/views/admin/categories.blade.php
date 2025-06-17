@@ -17,8 +17,9 @@
                         <td class="text-[#6D6D6D] text-start">{{ $category->products->count() }}</td>
                         <td>
                             <div class="flex gap-2">
-                                <form action="" class="flex items-center gap-2">
-                                    <input type="submit" class="h-10 w-16 bg-[#00DF77] rounded-lg text-white cursor-pointer" value="Edit">
+                                <form action="{{ route('admin.delete-category', $category->id) }}" method="POST" class="flex items-center gap-2">
+                                    @csrf
+                                    <input type="submit" class="h-10 w-16 bg-[#FF4A4D] rounded-lg text-white cursor-pointer" value="Delete">
                                 </form>
                                 <form action="{{ route('admin.category-products', $category->id) }}" method="GET" class="flex items-center gap-2">
                                     <input type="submit" class="h-10 w-40 bg-[#465FFF] rounded-lg text-white cursor-pointer" value="Show Products">
