@@ -35,6 +35,9 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
 
 Route::name('user.')->middleware(['auth', 'role:user'])->group(function () {
     Route::get('/stock', [UserStockController::class, 'stock'])->name('stock');
+    Route::post('/stock/in/{id}', [UserStockController::class, 'addStock'])->name('add-stock');
+    Route::post('/stock/out/{id}', [UserStockController::class, 'reduceStock'])->name('reduce-stock');
+
     Route::get('/product', [UserProductController::class, 'product'])->name('product');
 
     Route::get('/category', [UserCategoryController::class, 'category'])->name('category');
