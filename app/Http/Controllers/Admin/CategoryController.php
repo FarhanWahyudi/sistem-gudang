@@ -34,4 +34,14 @@ class CategoryController extends Controller
 
         return redirect()->route('admin.category');
     }
+
+    public function showProducts(int $id)
+    {
+        $category = Category::findOrFail($id);
+
+        return response()->view('admin.show-products', [
+            'category' => $category->name,
+            'products' => $category->products
+        ]);
+    }
 }

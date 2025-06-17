@@ -21,6 +21,7 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->name('admin.')->grou
     Route::post('/product/add-product', [ProductController::class, 'store'])->name('post-add-product');
     Route::get('/category', [CategoryController::class, 'index'])->name('category');
     Route::post('/category', [CategoryController::class, 'store'])->name('post-category');
+    Route::get('/category/{id}', [CategoryController::class, 'showProducts'])->name('category-products');
     Route::get('/staf', [StafController::class, 'staf'])->name('staf');
 });
 

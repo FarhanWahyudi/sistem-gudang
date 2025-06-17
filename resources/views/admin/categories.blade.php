@@ -20,7 +20,7 @@
                                 <form action="" class="flex items-center gap-2">
                                     <input type="submit" class="h-10 w-16 bg-[#00DF77] rounded-lg text-white cursor-pointer" value="Edit">
                                 </form>
-                                <form action="" class="flex items-center gap-2">
+                                <form action="{{ route('admin.category-products', $category->id) }}" method="GET" class="flex items-center gap-2">
                                     <input type="submit" class="h-10 w-40 bg-[#465FFF] rounded-lg text-white cursor-pointer" value="Show Products">
                                 </form>
                             </div>
