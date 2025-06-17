@@ -18,11 +18,11 @@
                 @foreach($products as $product)
                 <tr class="border-y-2">
                     <td class="font-bold flex items-center gap-3 py-2">
-                        <img src="{{asset('assets/products/Oxford-Stacking-Armchair.png')}}" alt="">
+                        <img src="{{asset('product-image/'. $product->image)}}" alt="" class="w-20">
                         {{ $product->title }}
                     </td>
                     <td class="text-[#6D6D6D] text-start">{{ $product->category->name }}</td>
-                    <td class="text-[#6D6D6D] text-start">{{ $product->price }}</td>
+                    <td class="text-[#6D6D6D] text-start">Rp{{ number_format($product->price, 0, ',', '.') }}</td>
                     <td class="text-[#6D6D6D] text-start">{{ $product->stock }}</td>
                     <td>
                         <form action="" class="flex items-center gap-2">

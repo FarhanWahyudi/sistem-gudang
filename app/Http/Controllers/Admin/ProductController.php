@@ -34,11 +34,18 @@ class ProductController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
+            'image' => 'required|image|mimes:jpg,jpeg,png|max:2048',
             'title' => 'required|string|max:100',
             'category_id' => 'required|integer|exists:categories,id',
             'price' => 'required|integer|min:0',
             'stock' => 'required|integer|min:0',
         ]);
+
+        $image = $request->image;
+        $imagename = time() . '.' . $image->getClientOriginalExtension();
+        $request->image->move(public_path('product-image'), $imagename);
+
+        $validated['image'] = $imagename;
 
         $this->productService->addProduct($validated);
 

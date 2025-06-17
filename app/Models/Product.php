@@ -15,6 +15,7 @@ class Product extends Model
     public $incrementing = true;
 
     public $fillable = [
+        'image',
         'title',
         'price',
         'stock',

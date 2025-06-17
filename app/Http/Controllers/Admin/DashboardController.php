@@ -15,8 +15,8 @@ class DashboardController extends Controller
         return response()->view('admin.dashboard', [
             'product' => Product::count(),
             'category' => Category::count(),
-            'stock' => Stock::count(),
-            'stockMenipis' => Stock::where('quantity', '<', 5)->count(),
+            'stock' => Product::sum('stock'),
+            'stockMenipis' => Product::where('stock', '<=', 5)->count(),
             'stocks' => Stock::all()
         ]);
     }

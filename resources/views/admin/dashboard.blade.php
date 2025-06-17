@@ -144,11 +144,11 @@
                     @foreach($stocks as $dataStock)
                     <tr class="border-y-2">
                         <td class="font-bold flex items-center gap-3 py-2">
-                            <img src="{{asset('assets/products/Oxford-Stacking-Armchair.png')}}" alt="">
+                            <img src="{{asset('product-image/'. $dataStock->product->image)}}" alt="" class="w-20">
                             {{ $dataStock->product->title }}
                         </td>
                         <td class="text-[#6D6D6D] text-start">{{ $dataStock->product->category->name }}</td>
-                        <td class="text-[#6D6D6D] text-start">{{ $dataStock->product->price }}</td>
+                        <td class="text-[#6D6D6D] text-start">Rp{{ number_format($dataStock->product->price, 0, ',', '.') }}</td>
                         <td class="text-[#6D6D6D] text-start">
                             <div class="flex items-start">
                                 <p>{{ $dataStock->stock_akhir }}</p>
